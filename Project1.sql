@@ -1,5 +1,5 @@
 /*
-Timothy and Shawn
+Timothy and Sean
 
 Create script to make a database for p181.
 
