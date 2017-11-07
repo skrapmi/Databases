@@ -104,52 +104,52 @@ insert into style values (
 insert into artist values (
 'Ramesh K Narayan', 
 66, 
-'Southern Europe', 
+'Southern Europe'
 );
 
 insert into artist values (
 'Joyce A English', 
 45, 
-'Dallas, Texas', 
+'Dallas, Texas'
 );
 
 insert into artist values (
 'Ahmad V Jabbar', 
 98, 
-'Canada', 
+'Canada'
 );
 
 insert into artist values (
 'James E Borg', 
 56, 
-'The Moon', 
+'The Moon'
 );
 
 insert into customer values (
 	'John B Smith', 
 	'123456789', 
 	'731 Fondren, Houston, TX',
-	30000.00,
+	30000.00
 );
 
 insert into customer values (
 	'Franklin T Wong', 
 	'333445555', 
 	'638 Voss, Houston, TX',
-	40000.00,
+	40000.00
 );
 
 insert into customer values (
 	'Alicia T Zelaya', 
 	'999887777', 
 	'3321 Castle, Spring, TX',
-	25000.00,
+	25000.00
 );
 
 insert into customer values (
 	'Jennifer S Wallace', 
 	'987654321', 
 	'291 Berry, Bellaire, TX',
-	43000.00,
+	43000.00
 );
 
