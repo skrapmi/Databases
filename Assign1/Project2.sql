@@ -1,4 +1,3 @@
-
 insert into employee values (
 'John',
 'B', 
@@ -11,6 +10,7 @@ insert into employee values (
 '333445555',
 5
 );
+
 
 insert into employee values (
 'Franklin',
