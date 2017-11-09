@@ -13,18 +13,8 @@ CREATE TABLE CUSTOMER (
 	CustomerID CHAR(9) NOT NULL,
 	Address VARCHAR(30) NOT NULL,
 	PurchaseHistory DECIMAL(15,2) NOT NULL,
-	PRIMARY KEY (Name, CustomerID),
+	PRIMARY KEY (CName, CustomerID),
 	UNIQUE(CustomerID)
-);
-
-CREATE TABLE ARTIST (
-	CName VARCHAR(50) NOT NULL,
-	Age INT NOT NULL,
-	BirthPlace VARCHAR(30),
-	PRIMARY KEY (Name),
-    FOREIGN KEY (style_Type) REFERENCES STYLE(StyleName)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
 );
 
 CREATE TABLE STYLE (
@@ -33,10 +23,22 @@ CREATE TABLE STYLE (
 	UNIQUE(StyleName)
 );
 
+CREATE TABLE ARTIST (
+	CName VARCHAR(50) NOT NULL,
+    style_Type VARCHAR(30) NOT NULL,
+    Age INT NOT NULL,
+	BirthPlace VARCHAR(30),
+	PRIMARY KEY (CName),
+    FOREIGN KEY (style_Type) REFERENCES style(StyleName)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
 CREATE TABLE ARTWORK (
 	Title VARCHAR(45) NOT NULL,
 	Price DECIMAL(15,2) NOT NULL,
-	YearCreated YEAR(4),
+    style_Type VARCHAR(30) NOT NULL,
+	YearCreated INT,
 	PRIMARY KEY (Title),
     FOREIGN KEY (style_Type) REFERENCES STYLE(StyleName)
     ON DELETE CASCADE 
@@ -45,39 +47,18 @@ CREATE TABLE ARTWORK (
 );
 
 CREATE TABLE LIKES (
+	CID VARCHAR (9),
+    LIKED_ARTIST VARCHAR (50),
+    LIKED_ARTWORK VARCHAR (45),
 	FOREIGN KEY (CID) REFERENCES CUSTOMER(CustomerID)
     ON DELETE CASCADE 
     ON UPDATE CASCADE,
-    FOREIGN KEY (LIKED_ARTIST) REFERENCES ARTIST(Name)
+    FOREIGN KEY (LIKED_ARTIST) REFERENCES ARTIST(CName)
     ON DELETE CASCADE 
     ON UPDATE CASCADE,
 	FOREIGN KEY (LIKED_ARTWORK) REFERENCES ARTWORK(Title)
     ON DELETE CASCADE 
     ON UPDATE CASCADE
-);
-
-insert into artwork values (
-	'Winged Victory',
-	100000000.00,
-	190
-);
-
-insert into artwork values (
-	'David',
-	9876087000.00,
-	1501
-);
-
-insert into artwork values (
-	'Sphere Within A Sphere',
-	5660000.00,
-	1960
-);
-
-insert into artwork values (
-	'The Thinker',
-	403023400.00,
-	1904
 );
 
 insert into style values (
@@ -119,26 +100,58 @@ insert into style values (
 	'Still life'
 );
 
+insert into artwork values (
+	'Winged Victory',
+	100000000.00,
+	'Still life',
+	190
+);
+
+insert into artwork values (
+	'David',
+	9876087000.00,
+    'Religious',
+	1501
+);
+
+insert into artwork values (
+	'Sphere Within A Sphere',
+	5660000.00,
+    'Futurism',
+	1960
+);
+
+insert into artwork values (
+	'The Thinker',
+	403023400.00,
+    'Works of 19th century',
+	1904
+);
+
 insert into artist values (
-'Ramesh K Narayan', 
+'Ramesh K Narayan',
+'Pop Art',
 66, 
 'Southern Europe'
 );
 
 insert into artist values (
 'Joyce A English', 
+'Photorealism',
 45, 
 'Dallas, Texas'
 );
 
 insert into artist values (
-'Ahmad V Jabbar', 
+'Ahmad V Jabbar',
+'Futurism', 
 98, 
 'Canada'
 );
 
 insert into artist values (
-'James E Borg', 
+'James E Borg',
+'Still life', 
 56, 
 'The Moon'
 );
@@ -181,5 +194,17 @@ insert into likes values (
 	'987654321',
     NULL,
     'The Thinker'
-)
+);
+
+insert into likes values (
+	'999887777',
+    'Joyce A English',
+    NULL 
+);
+
+insert into likes values (
+	'333445555',
+    NULL,
+    'Sphere Within A Sphere'
+);
 
